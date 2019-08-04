@@ -10,9 +10,12 @@ export class ServVirtualShopService {
   arrCategories: Object[] = [];
   arrProducts: Object[] = [];
   arrCart: Object[] = [];
-  totalCost: number = 0;
+  totalCost: number = 0;    
+
 
   view: string = "categories";
+  previous: string = "";
+  currentCategory: string = "";
 
   updateCart(newCart: Object[]): void {
     this.arrCart = newCart;
@@ -25,8 +28,9 @@ export class ServVirtualShopService {
     return num;
   }
 
-  loadCart(): void {
+  loadCart(previousView: string): void {
     this.view = "carrito";
+    this.previous = previousView;
     this.totalCost = 0;
     for (let i = 0; i < this.arrCart.length; i++) {
       this.totalCost += this.arrCart[i]["price"] * this.arrCart[i]["amount"];
@@ -59,11 +63,13 @@ export class ServVirtualShopService {
 
   setView(newView: string): void {
     this.view = newView;
-    console.log(this.view)
+    // console.log(this.view)
   }
+
+
   getCategories(url: string): void {
 
-    console.log(url)
+    // console.log(url)
     this.httpGetAsync(url, this.loadCategories, this.arrCategories);
   }
 
@@ -87,10 +93,12 @@ export class ServVirtualShopService {
     console.log("loaded categories: ", arrCategories);
   }
 
-  getProducts(url: string): void {
+  getProducts(id: number): void {
 
     this.arrProducts = [];
-    console.log(url)
+    let url = "https://raw.githubusercontent.com/JoseHervas/fullstack-bootcamp/master/Contents/01-Front-end/03-JavaScript/02-jQuery/03-AJAX/dummyShop/" + id + ".json";
+    this.currentCategory = this.arrCategories[id-1]["name"];
+
     this.httpGetAsync(url, this.loadProducts, this.arrProducts);
     this.view = "products";
   }
@@ -103,6 +111,20 @@ export class ServVirtualShopService {
     }
   }
 
+
+
+  reduceAmount(i) {
+    if (this.arrCart[i]["amount"] > 0) {
+      this.arrCart[i]["amount"]--;
+      this.totalCost -= this.arrCart[i]["price"];
+    }
+  }
+  increaseAmount(i) {
+
+    this.arrCart[i]["amount"]++;
+    this.totalCost += this.arrCart[i]["price"];
+
+  }
 
   constructor() {}
 }

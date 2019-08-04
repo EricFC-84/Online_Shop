@@ -20,9 +20,9 @@ export class CategoriasComponent implements OnInit {
     this._servVirtualShop.getCategories("https://raw.githubusercontent.com/JoseHervas/fullstack-bootcamp/master/Contents/01-Front-end/03-JavaScript/02-jQuery/03-AJAX/dummyShop/categories.json");
   }
 
-  loadProd(id): void {
+  loadProd(id:number): void {
     /* this.listCategories = */    
-    this._servVirtualShop.getProducts("https://raw.githubusercontent.com/JoseHervas/fullstack-bootcamp/master/Contents/01-Front-end/03-JavaScript/02-jQuery/03-AJAX/dummyShop/" + id + ".json");
+    this._servVirtualShop.getProducts(id);
   }
 
   constructor(public _servVirtualShop: ServVirtualShopService) {

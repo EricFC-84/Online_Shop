@@ -29,7 +29,7 @@ export class ProductosComponent implements OnInit {
   }
 
   checkout() {
-    this._servVirtualShop.loadCart();
+    this._servVirtualShop.loadCart("products");
   }
   constructor(public _servVirtualShop: ServVirtualShopService) {}
 

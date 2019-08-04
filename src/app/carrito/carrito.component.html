@@ -1,25 +1,49 @@
 <div *ngIf="_servVirtualShop.view == 'carrito'">
-  <h2>Cart:</h2>
-  <div class="container">
+
+    <header>
+        <div class="header__bg"></div>
+
+        <h1 id="title">My cart:</h1>
+        <!-- <img src="http://erikdkennedy.com/r-r-r-random/divider-triangle.png" class="divider" /> -->
+    </header>
+
+  <div class="container mt-5">
+
+    <div class="row">
+        <button (click)="back()" id="backBtn" class="btn btn-info btn-lg mt-5">Go back</button>
+    </div>
     <div class="row">
 
       <table class="col-7 table table-striped table-responsive table-dark ">
         <thead>
-          <th>Item</th>
-          <th>Price</th>
-          <th>Amount</th>
+          <th class="w-50">Item</th>
+          <th class="w-25">Price</th>
+          <th class="w-25">Amount</th>
         </thead>
         <tbody>
-          <tr *ngFor="let element of _servVirtualShop.arrCart">
+          <tr *ngFor="let element of _servVirtualShop.arrCart;let i = 'index'">
             <td>{{element["name"]}}</td>
             <td>{{element["price"]}}{{element["unit"]}}</td>
-            <td>{{element["amount"]}}</td>
+            <td><button class="btn btn-outline-danger" id="reduceAmount" (click)="reduceAmount(i)">-</button>&nbsp;&nbsp;{{element["amount"]}}&nbsp;&nbsp;
+              <button class="btn btn-outline-success" id="increaseAmount" (click)="increaseAmount(i)">+</button></td>
+           <!--  <td>
+            <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                  
+                  <li class="page-item "><a class="page-link" id="reduceAmount" href="#">-</a></li>
+                  <li class="page-item">&nbsp;{{element["amount"]}}&nbsp;</li>
+                  <li class="page-item increaseAmount"><a class="page-link" href="#">+</a></li>
+                  
+                </ul>
+              </nav>
+            </td> -->
+
           </tr>
         </tbody>
         <tfoot>
           <th style="text-align: right">Total cost:</th>
           <th>{{_servVirtualShop.totalCost}}$</th>
-          <th><button class="btn btn-success" (click)="checkout()" data-toggle="modal" data-target="#saleConfirmedModal"><i class="fas fa-shopping-cart"></i></button></th>
+          <th><button class="btn btn-success" (click)="checkout()" data-toggle="modal" data-target="#saleConfirmedModal" [disabled] = "_servVirtualShop.numProducts() == 0"><i class="fas fa-shopping-cart"></i></button></th>
         </tfoot>
       </table>
 

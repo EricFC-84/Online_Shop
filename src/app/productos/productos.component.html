@@ -1,39 +1,49 @@
 <div *ngIf="_servVirtualShop.view == 'products'">
 
+<header>
+    <div class="header__bg"></div>
 
+    <h1 id="title">{{_servVirtualShop.currentCategory}}</h1>
+    <!-- <img src="http://erikdkennedy.com/r-r-r-random/divider-triangle.png" class="divider" /> -->
+</header>
   <div class="container mt-5">
-    <button (click)="back()">Go back</button>
-    <button (click)="checkout()">Checkout</button>
+      
 
+    <div class="row justify-content-center mb-2">
+      <button (click)="back()" id="backBtn" class="btn btn-info btn-lg">Go back</button>
+      <button (click)="checkout()" id="checkoutBtn" class="btn btn-success btn-lg">Checkout  <i
+        class="fas fa-shopping-cart"></i></button>
+    </div>
     <div class="row">
 
 
 
 
 
-<!--  -->
+      <!--  -->
 
-<div class="col-md-4" *ngFor="let element of _servVirtualShop.arrProducts" > 
+      <div class="col-md-4" *ngFor="let element of _servVirtualShop.arrProducts">
         <figure class="card card-product">
-            <div class="img-wrap"><img src="{{element['imageURL']}}"></div>
-            <figcaption class="info-wrap">
-                    <h4 class="title">{{element["name"]}}</h4>
-                    <p class="desc">{{element["description"]}}</p>
-                    <div class="rating-wrap">
-                        <div class="label-rating">132 reviews</div>
-                        <div class="label-rating">154 orders </div>
-                    </div> <!-- rating-wrap.// -->
-            </figcaption>
-            <div class="bottom-wrap">
-                <!-- <a href="" class="btn btn-sm btn-primary float-right">Order Now</a>  -->
-                <button class="btn btn-sm btn-primary float-right" (click)="addCart(element)">Add to cart</button>
-                <div class="price-wrap h5">
-                    <span class="price-new"> New price {{element["price"]}}{{element["unit"]}}</span> <br> <del class="price-old">{{element["price"]*1.25}}{{element["unit"]}}</del>
-                </div> <!-- price-wrap.// -->
-            </div> <!-- bottom-wrap.// -->
+          <div class="img-wrap"><img src="{{element['imageURL']}}"></div>
+          <figcaption class="info-wrap">
+            <h4 class="title">{{element["name"]}}</h4>
+            <p class="desc">{{element["description"]}}</p>
+            <div class="rating-wrap">
+              <div class="label-rating">132 reviews</div>
+              <div class="label-rating">154 orders </div>
+            </div> <!-- rating-wrap.// -->
+          </figcaption>
+          <div class="bottom-wrap">
+            <!-- <a href="" class="btn btn-sm btn-primary float-right">Order Now</a>  -->
+            <button class="btn btn-sm btn-primary float-right" (click)="addCart(element)">Add to cart</button>
+            <div class="price-wrap h5">
+              <span class="price-new"> New price {{element["price"]}}{{element["unit"]}}</span> <br> <del
+                class="price-old">{{element["price"]*1.25}}{{element["unit"]}}</del>
+            </div> <!-- price-wrap.// -->
+          </div> <!-- bottom-wrap.// -->
         </figure>
-    </div> <!-- col // -->
-<!--  -->
+      </div> <!-- col // -->
+      <!--  -->
 
       <!-- <div class="card col-4" *ngFor="let element of _servVirtualShop.arrProducts">
           

@@ -11,3 +11,7 @@ li h4:hover{
     font-size: 1.5rem;
     text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
 }
+
+.container {
+    margin-left: 10%;
+}

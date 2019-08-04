@@ -3,14 +3,22 @@
 
 
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top">
-  <a class="navbar-brand" href="#">My shop!</a>
+  <a class="navbar-brand" href="#" (click)="home()">My shop!</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
     aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
   <div class="collapse navbar-collapse" id="navbarCollapse">
-
+      <div class="dropdown">
+          <button class="btn btn-dark dropdown-toggle ml-5" type="button" data-toggle="dropdown">Categories
+          <span class="caret"></span></button>
+          <ul class="dropdown-menu bg-dark text-white ml-5">
+              <li *ngFor="let element of _servVirtualShop.arrCategories; let i = 'index'" class="ml-2">
+                  <p (click)="loadProd(element['id'])"> {{element["name"]}}</p>
+                </li>
+          </ul>
+        </div>
 
     <form class="form-inline mt-2 mt-md-0 ml-auto">
       <button class="btn btn-outline-success my-2 my-sm-0 ml-auto mr-3" type="button" (click)="checkout()"><i

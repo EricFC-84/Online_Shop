@@ -11,8 +11,19 @@ import {
 export class NavbarComponent implements OnInit {
 
   checkout():void{
-    this._servVirtualShop.loadCart()
+    this._servVirtualShop.loadCart(this._servVirtualShop.view)
   }
+
+  home(){
+    console.log("home")
+    this._servVirtualShop.setView("categories");
+  }
+
+  loadProd(id:number): void {
+    /* this.listCategories = */    
+    this._servVirtualShop.getProducts(id);
+  }
+
   constructor(public _servVirtualShop: ServVirtualShopService) { }
 
   ngOnInit() {
