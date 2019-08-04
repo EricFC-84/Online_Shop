@@ -1,0 +1,54 @@
+<div *ngIf="_servVirtualShop.view == 'carrito'">
+  <h2>Cart:</h2>
+  <div class="container">
+    <div class="row">
+
+      <table class="col-7 table table-striped table-responsive table-dark ">
+        <thead>
+          <th>Item</th>
+          <th>Price</th>
+          <th>Amount</th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let element of _servVirtualShop.arrCart">
+            <td>{{element["name"]}}</td>
+            <td>{{element["price"]}}{{element["unit"]}}</td>
+            <td>{{element["amount"]}}</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <th style="text-align: right">Total cost:</th>
+          <th>{{_servVirtualShop.totalCost}}$</th>
+          <th><button class="btn btn-success" (click)="checkout()" data-toggle="modal" data-target="#saleConfirmedModal"><i class="fas fa-shopping-cart"></i></button></th>
+        </tfoot>
+      </table>
+
+
+
+      <!--  -->
+      <div class="modal" tabindex="-1" role="dialog" id="saleConfirmedModal">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Sale complete!</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p>Thank you very much for your purchase.</p>
+              <p>Do not hesitate to continue browsing our products!</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" data-dismiss="modal" class="btn btn-primary" (click)="_servVirtualShop.setView('categories')">OK</button>
+              <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--  -->
+
+
+    </div>
+  </div>
+</div>

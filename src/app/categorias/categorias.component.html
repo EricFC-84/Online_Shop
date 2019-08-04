@@ -1,0 +1,11 @@
+<div *ngIf="_servVirtualShop.view == 'categories'">
+  <div class="container">
+    <ol class="list">
+      <li *ngFor="let element of _servVirtualShop.arrCategories; let i = 'index'">
+        <h4 (click)="loadProd(element['id'])"> {{element["name"]}}</h4>
+      </li>
+
+
+    </ol>
+  </div>
+</div>

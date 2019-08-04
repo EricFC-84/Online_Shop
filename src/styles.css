@@ -1,0 +1,9 @@
+/* You can add global styles to this file, and also import other style files */
+body {
+    height: 100vh;
+    background-color: #ace6ff;
+    background-position: center;
+    background-image: url("http://www.motheatre.org/wp-content/uploads/2018/10/Online-Shopping-compressor.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
